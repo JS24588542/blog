@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar16.png">
+  <link rel="mask-icon" href="/images/avatar32.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flash.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.js2458.one","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Hadoop的部署步骤（暂时仅有win版单机部署） 首先声明：对于大多数错误，首先确认JDK和Hadoop版本，然后才是winutils版本、配置信息。我默认你能看懂输出和报错。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop部署">
+<meta property="og:url" content="https://blog.js2458.one/2023/10/15/01-34-22/index.html">
+<meta property="og:site_name" content="节水的垃圾堆">
+<meta property="og:description" content="Hadoop的部署步骤（暂时仅有win版单机部署） 首先声明：对于大多数错误，首先确认JDK和Hadoop版本，然后才是winutils版本、配置信息。我默认你能看懂输出和报错。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/15/pi9GJz9.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/15/pi9G5FS.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/15/pi9GzYF.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/15/pi9JSW4.png">
+<meta property="article:published_time" content="2023-10-15T01:34:22.000Z">
+<meta property="article:modified_time" content="2025-01-07T17:17:08.308Z">
+<meta property="article:author" content="节水">
+<meta property="article:tag" content="Hadoop">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/10/15/pi9GJz9.png">
+
+
+<link rel="canonical" href="https://blog.js2458.one/2023/10/15/01-34-22/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.js2458.one/2023/10/15/01-34-22/","path":"2023/10/15/01-34-22/","title":"Hadoop部署"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hadoop部署 | 节水的垃圾堆</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+  
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节水的垃圾堆</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">你怎么什么都坚持不下去呢（恼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDjdk%E5%92%8Chadoop"><span class="nav-number">1.</span> <span class="nav-text"> 下载JDK和Hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDwinutils"><span class="nav-number">2.</span> <span class="nav-text"> 下载winutils</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text"> 添加环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="nav-number">4.</span> <span class="nav-text"> 检测是否安装成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%80%E4%BA%9Bhadoop%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text"> 修改一些Hadoop配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#core-sitexml"><span class="nav-number">5.1.</span> <span class="nav-text"> core-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapreduce-sitexml"><span class="nav-number">5.2.</span> <span class="nav-text"> mapreduce-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hdfs-sitexml"><span class="nav-number">5.3.</span> <span class="nav-text"> hdfs-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yarn-sitexml"><span class="nav-number">5.4.</span> <span class="nav-text"> yarn-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop-envcmd"><span class="nav-number">5.5.</span> <span class="nav-text"> hadoop-env.cmd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8winutils%E6%9B%BF%E6%8D%A2bin%E7%9B%AE%E5%BD%95"><span class="nav-number">5.6.</span> <span class="nav-text"> 使用winutils替换bin目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95"><span class="nav-number">5.7.</span> <span class="nav-text"> 格式化存储目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hadoop%E5%90%AF%E5%8A%A8"><span class="nav-number">6.</span> <span class="nav-text"> Hadoop，启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text"> 服务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9%E7%8A%B6%E6%80%81"><span class="nav-number">7.1.</span> <span class="nav-text"> 查看集群节点状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2"><span class="nav-number">7.2.</span> <span class="nav-text"> 查看文件管理页面</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="节水"
+      src="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+  <p class="site-author-name" itemprop="name">节水</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JS24588542" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JS24588542" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/js2458" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;js2458" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/10849561?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;10849561?spm_id_from&#x3D;333.1007.0.0" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.js2458.one/2023/10/15/01-34-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+      <meta itemprop="name" content="节水">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hadoop部署 | 节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hadoop部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-15 09:34:22" itemprop="dateCreated datePublished" datetime="2023-10-15T09:34:22+08:00">2023-10-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-08 01:17:08" itemprop="dateModified" datetime="2025-01-08T01:17:08+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%8E%AF%E5%A2%83/" itemprop="url" rel="index"><span itemprop="name">环境</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Hadoop的部署步骤（暂时仅有win版单机部署）<br>
+首先声明：对于大多数错误，首先确认JDK和Hadoop版本，然后才是winutils版本、配置信息。我默认你能看懂输出和报错。</p>
+<span id="more"></span>
+<h2 id="下载jdk和hadoop"><a class="markdownIt-Anchor" href="#下载jdk和hadoop"></a> 下载JDK和Hadoop</h2>
+<p>本文使用JDK11和Hadoop3.3.5，后面不再说明。之前使用了JDK17，但是在运行时报错很多，最后卡在了这里无法解决：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"> ERROR nodemanager<span class="token punctuation">.</span>NodeManager<span class="token operator">:</span> Error starting NodeManager
+java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ExceptionInInitializerError
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>$FastClassEmitter<span class="token punctuation">.</span><span class="token operator">&lt;</span>init<span class="token operator">&gt;</span><span class="token punctuation">(</span>FastClassEmitter<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">67</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>$FastClass$Generator<span class="token punctuation">.</span><span class="token function">generateClass</span><span class="token punctuation">(</span>FastClass<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">72</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>core<span class="token punctuation">.</span>$DefaultGeneratorStrategy<span class="token punctuation">.</span><span class="token function">generate</span><span class="token punctuation">(</span>DefaultGeneratorStrategy<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">25</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>core<span class="token punctuation">.</span>$AbstractClassGenerator<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>AbstractClassGenerator<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">216</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>$FastClass$Generator<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>FastClass<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">64</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>BytecodeGen<span class="token punctuation">.</span><span class="token function">newFastClass</span><span class="token punctuation">(</span>BytecodeGen<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">204</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>ProviderMethod$FastClassProviderMethod<span class="token punctuation">.</span><span class="token operator">&lt;</span>init<span class="token operator">&gt;</span><span class="token punctuation">(</span>ProviderMethod<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">256</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>ProviderMethod<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>ProviderMethod<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">71</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>ProviderMethodsModule<span class="token punctuation">.</span><span class="token function">createProviderMethod</span><span class="token punctuation">(</span>ProviderMethodsModule<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">275</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>ProviderMethodsModule<span class="token punctuation">.</span><span class="token function">getProviderMethods</span><span class="token punctuation">(</span>ProviderMethodsModule<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">144</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>ProviderMethodsModule<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span>ProviderMethodsModule<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">123</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>spi<span class="token punctuation">.</span>Elements$RecordingBinder<span class="token punctuation">.</span><span class="token function">install</span><span class="token punctuation">(</span>Elements<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">340</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>spi<span class="token punctuation">.</span>Elements$RecordingBinder<span class="token punctuation">.</span><span class="token function">install</span><span class="token punctuation">(</span>Elements<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">349</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>AbstractModule<span class="token punctuation">.</span><span class="token function">install</span><span class="token punctuation">(</span>AbstractModule<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">122</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletModule<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span>ServletModule<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">52</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>AbstractModule<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span>AbstractModule<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">62</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>spi<span class="token punctuation">.</span>Elements$RecordingBinder<span class="token punctuation">.</span><span class="token function">install</span><span class="token punctuation">(</span>Elements<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">340</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>spi<span class="token punctuation">.</span>Elements<span class="token punctuation">.</span><span class="token function">getElements</span><span class="token punctuation">(</span>Elements<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">110</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>InjectorShell$Builder<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>InjectorShell<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">138</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>InternalInjectorCreator<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>InternalInjectorCreator<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">104</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>Guice<span class="token punctuation">.</span><span class="token function">createInjector</span><span class="token punctuation">(</span>Guice<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">96</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>Guice<span class="token punctuation">.</span><span class="token function">createInjector</span><span class="token punctuation">(</span>Guice<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">73</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>Guice<span class="token punctuation">.</span><span class="token function">createInjector</span><span class="token punctuation">(</span>Guice<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">62</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>webapp<span class="token punctuation">.</span>WebApps$Builder<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>WebApps<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">417</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>webapp<span class="token punctuation">.</span>WebApps$Builder<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span>WebApps<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">465</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>webapp<span class="token punctuation">.</span>WebApps$Builder<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span>WebApps<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">461</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>server<span class="token punctuation">.</span>nodemanager<span class="token punctuation">.</span>webapp<span class="token punctuation">.</span>WebServer<span class="token punctuation">.</span><span class="token function">serviceStart</span><span class="token punctuation">(</span>WebServer<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">125</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>service<span class="token punctuation">.</span>AbstractService<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span>AbstractService<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">194</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>service<span class="token punctuation">.</span>CompositeService<span class="token punctuation">.</span><span class="token function">serviceStart</span><span class="token punctuation">(</span>CompositeService<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">122</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>service<span class="token punctuation">.</span>AbstractService<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span>AbstractService<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">194</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>server<span class="token punctuation">.</span>nodemanager<span class="token punctuation">.</span>NodeManager<span class="token punctuation">.</span><span class="token function">initAndStartNodeManager</span><span class="token punctuation">(</span>NodeManager<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">963</span><span class="token punctuation">)</span>
+        at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>server<span class="token punctuation">.</span>nodemanager<span class="token punctuation">.</span>NodeManager<span class="token punctuation">.</span><span class="token function">main</span><span class="token punctuation">(</span>NodeManager<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">1042</span><span class="token punctuation">)</span>
+Caused by<span class="token operator">:</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>InaccessibleObjectException<span class="token operator">:</span> Unable to make <span class="token keyword">protected</span> <span class="token keyword">final</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Class java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ClassLoader<span class="token punctuation">.</span><span class="token function">defineClass</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">,</span>byte<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">,</span>java<span class="token punctuation">.</span>security<span class="token punctuation">.</span>ProtectionDomain<span class="token punctuation">)</span> throws java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>ClassFormatError accessible<span class="token operator">:</span> <span class="token keyword">module</span> <span class="token module">java<span class="token punctuation">.</span>base</span> does <span class="token operator">not</span> <span class="token string">"opens java.lang"</span> to unnamed <span class="token keyword">module</span> @<span class="token number">6025e1</span>b6
+        at java<span class="token punctuation">.</span>base<span class="token operator">/</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>AccessibleObject<span class="token punctuation">.</span><span class="token function">checkCanSetAccessible</span><span class="token punctuation">(</span>AccessibleObject<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">354</span><span class="token punctuation">)</span>
+        at java<span class="token punctuation">.</span>base<span class="token operator">/</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>AccessibleObject<span class="token punctuation">.</span><span class="token function">checkCanSetAccessible</span><span class="token punctuation">(</span>AccessibleObject<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">297</span><span class="token punctuation">)</span>
+        at java<span class="token punctuation">.</span>base<span class="token operator">/</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">.</span><span class="token function">checkCanSetAccessible</span><span class="token punctuation">(</span>Method<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">199</span><span class="token punctuation">)</span>
+        at java<span class="token punctuation">.</span>base<span class="token operator">/</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span>Method<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">193</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>core<span class="token punctuation">.</span>$ReflectUtils$<span class="token number">2.</span><span class="token function">run</span><span class="token punctuation">(</span>ReflectUtils<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">56</span><span class="token punctuation">)</span>
+        at java<span class="token punctuation">.</span>base<span class="token operator">/</span>java<span class="token punctuation">.</span>security<span class="token punctuation">.</span>AccessController<span class="token punctuation">.</span><span class="token function">doPrivileged</span><span class="token punctuation">(</span>AccessController<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">318</span><span class="token punctuation">)</span>
+        at com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>inject<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>core<span class="token punctuation">.</span>$ReflectUtils<span class="token punctuation">.</span><span class="token operator">&lt;</span>clinit<span class="token operator">&gt;</span><span class="token punctuation">(</span>ReflectUtils<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">46</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">32</span> more
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">882</span> INFO ipc<span class="token punctuation">.</span>Server<span class="token operator">:</span> Stopping server on <span class="token number">8122</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">882</span> INFO ipc<span class="token punctuation">.</span>Server<span class="token operator">:</span> Stopping IPC Server listener on <span class="token number">0</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">882</span> INFO ipc<span class="token punctuation">.</span>Server<span class="token operator">:</span> Stopping IPC Server Responder
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">883</span> WARN monitor<span class="token punctuation">.</span>ContainersMonitorImpl<span class="token operator">:</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>server<span class="token punctuation">.</span>nodemanager<span class="token punctuation">.</span>containermanager<span class="token punctuation">.</span>monitor<span class="token punctuation">.</span>ContainersMonitorImpl is interrupted<span class="token punctuation">.</span> Exiting<span class="token punctuation">.</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">889</span> INFO ipc<span class="token punctuation">.</span>Server<span class="token operator">:</span> Stopping server on <span class="token number">8040</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">890</span> INFO ipc<span class="token punctuation">.</span>Server<span class="token operator">:</span> Stopping IPC Server listener on <span class="token number">8040</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">890</span> INFO ipc<span class="token punctuation">.</span>Server<span class="token operator">:</span> Stopping IPC Server Responder
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">890</span> WARN nodemanager<span class="token punctuation">.</span>NodeResourceMonitorImpl<span class="token operator">:</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>yarn<span class="token punctuation">.</span>server<span class="token punctuation">.</span>nodemanager<span class="token punctuation">.</span>NodeResourceMonitorImpl is interrupted<span class="token punctuation">.</span> Exiting<span class="token punctuation">.</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">890</span> INFO localizer<span class="token punctuation">.</span>ResourceLocalizationService<span class="token operator">:</span> Public cache exiting
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">891</span> INFO impl<span class="token punctuation">.</span>MetricsSystemImpl<span class="token operator">:</span> Stopping NodeManager metrics system<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">892</span> INFO impl<span class="token punctuation">.</span>MetricsSystemImpl<span class="token operator">:</span> NodeManager metrics system stopped<span class="token punctuation">.</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">892</span> INFO impl<span class="token punctuation">.</span>MetricsSystemImpl<span class="token operator">:</span> NodeManager metrics system shutdown complete<span class="token punctuation">.</span>
+<span class="token number">2023</span><span class="token operator">-</span><span class="token number">10</span><span class="token operator">-</span><span class="token number">12</span> <span class="token number">15</span><span class="token operator">:</span><span class="token number">56</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">893</span> INFO nodemanager<span class="token punctuation">.</span>NodeManager<span class="token operator">:</span> SHUTDOWN_MSG<span class="token operator">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大概就是guice包用到的反射机制在JDK17被限制了，我尝试添加jvm参数：<code>--add-opens java.base/java.lang=ALL-UNNAMED</code>也没用，同时JDK17也取消了<code>--illegal-access=permit</code>的使用。目前我暂时没找到如何在JDK17上运行Hadoop。</p>
+<h2 id="下载winutils"><a class="markdownIt-Anchor" href="#下载winutils"></a> 下载winutils</h2>
+<p>下载对应自己Hadoop版本的<a target="_blank" rel="noopener" href="https://github.com/cdarlint/winutils">winutils</a></p>
+<h2 id="添加环境变量"><a class="markdownIt-Anchor" href="#添加环境变量"></a> 添加环境变量</h2>
+<p>添加HADOOP_HOME和HADOOP_SUER_NAME配置</p>
+<ul>
+<li>HADOOP_NAME=“你的Hadoop存放目录，例如D:/envs/hadoop-3.3.5”</li>
+<li>HADOOP_SUER_NAME=“root”</li>
+<li>JAVA_HOME=“你的JDK路径”，如果你本来就有JDK，但是版本是17这些高版本，也不需要修改，具体看后面操作。</li>
+</ul>
+<p>在path中添加：</p>
+<ul>
+<li>%JAVA_HOME%\bin</li>
+<li>%JAVA_HOME%\jre\bin</li>
+<li>%HADOOP_HOME%\bin</li>
+<li>%HADOOP_HOME%\sbin</li>
+</ul>
+<h2 id="检测是否安装成功"><a class="markdownIt-Anchor" href="#检测是否安装成功"></a> 检测是否安装成功</h2>
+<p>命令行运行如下命令：</p>
+<p><code>java -version</code><br>
+<code>hadoop version</code></p>
+<p>应当形如：</p>
+<img src="/images/posts/pi9GJz9.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/15/pi9GJz9.png'">
+<h2 id="修改一些hadoop配置文件"><a class="markdownIt-Anchor" href="#修改一些hadoop配置文件"></a> 修改一些Hadoop配置文件</h2>
+<p><strong>etc/hadoop文件夹中</strong></p>
+<h3 id="core-sitexml"><a class="markdownIt-Anchor" href="#core-sitexml"></a> core-site.xml</h3>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>fs.defaultFS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 使用localhost来指定你的本机 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>hdfs://localhost:9000<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 保证此目录存在且具有适当的权限 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>/D:/envs/hadoop-3.3.5/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.http.staticuser.user<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 使用root可能不是最佳做法，除非你有明确的原因这样做。考虑使用普通用户帐号 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>root<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="mapreduce-sitexml"><a class="markdownIt-Anchor" href="#mapreduce-sitexml"></a> mapreduce-site.xml</h3>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>mapreduce.framework.name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>yarn<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="hdfs-sitexml"><a class="markdownIt-Anchor" href="#hdfs-sitexml"></a> hdfs-site.xml</h3>
+<p>在Hadoop目录下创建data目录<br>
+在刚才创建的data目录下创建namenode目录</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 这个参数设置为1，因为是单机版hadoop --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.replication <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.permissions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.namenode.name.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>/D:/envs/hadoop-3.3.5/data/namenode<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>fs.checkpoint.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>/D:/envs/hadoop-3.3.5/data/snn<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>fs.checkpoint.edits.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>/D:/envs/hadoop-3.3.5/data/snn<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.datanode.data.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>/D:/envs/hadoop-3.3.5/data/datanode<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="yarn-sitexml"><a class="markdownIt-Anchor" href="#yarn-sitexml"></a> yarn-site.xml</h3>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- Site specific YARN configuration properties --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>yarn.nodemanager.aux-services<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>mapreduce_shuffle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>yarn.nodemanager.auxservices.mapreduce.shuffle.class<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>org.apache.hadoop.mapred.ShuffleHandler<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="hadoop-envcmd"><a class="markdownIt-Anchor" href="#hadoop-envcmd"></a> hadoop-env.cmd</h3>
+<p>找到<code>set JAVA_HOME=%JAVA_HOME</code>一行，如果你本来就是JAVA8或者11，不需要改动，如果是17这类，修改为刚才下载的JDK11路径，例如：<code>set JAVA_HOME=%C:\Java\jdk-11%</code></p>
+<h3 id="使用winutils替换bin目录"><a class="markdownIt-Anchor" href="#使用winutils替换bin目录"></a> 使用winutils替换bin目录</h3>
+<p>复制粘贴就行，版本对上就ok</p>
+<h3 id="格式化存储目录"><a class="markdownIt-Anchor" href="#格式化存储目录"></a> 格式化存储目录</h3>
+<p>命令行输入：<br>
+<code>hdfs namenode -format</code><br>
+至此，应当完成配置了</p>
+<h2 id="hadoop启动"><a class="markdownIt-Anchor" href="#hadoop启动"></a> Hadoop，启动</h2>
+<p>命令行输入start-all.cmd，通过jps应当可以查看到这几个服务：</p>
+<img src="/images/posts/pi9G5FS.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/15/pi9G5FS.png'">
+<h2 id="服务管理"><a class="markdownIt-Anchor" href="#服务管理"></a> 服务管理</h2>
+<h3 id="查看集群节点状态"><a class="markdownIt-Anchor" href="#查看集群节点状态"></a> 查看集群节点状态</h3>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1:8088/">http://127.0.0.1:8088/</a></p>
+<img src="/images/posts/pi9GzYF.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/15/pi9GzYF.png'">
+<h3 id="查看文件管理页面"><a class="markdownIt-Anchor" href="#查看文件管理页面"></a> 查看文件管理页面</h3>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1:9870/">http://127.0.0.1:9870/</a></p>
+<img src="/images/posts/pi9JSW4.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/15/pi9JSW4.png'">
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hadoop/" rel="tag"><i class="fa fa-tag"></i> Hadoop</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/11/17-28-56/" rel="prev" title="使用Scrapy+splash写爬虫">
+                  <i class="fa fa-chevron-left"></i> 使用Scrapy+splash写爬虫
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/18/01-26-39/" rel="next" title="Java作业-5">
+                  Java作业-5 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">节水</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">226k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:25</span>
+  </span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动-->
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/katex.min.css" integrity="sha256-oWCabCfPd4Oi21wqZezBSz/anto4VYcJqc9sM9IzQTk=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
+
+<!-- 页面点击出现烟花 -->
+
+
+
+
+
+  <script src="/js/myjs/code-unfold.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar16.png">
+  <link rel="mask-icon" href="/images/avatar32.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flash.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.js2458.one","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="描述Java 合集框架。列出Collection 接口下面的接口、便利抽象类以及具体类 使用什么方法来从迭代器得到合集中的一个元素? ArrayList与LinkedList 之间的区别是什么?应该使用哪种线性表在一个线性表的起始位置插入和删除元素 ······">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java作业-2">
+<meta property="og:url" content="https://blog.js2458.one/2023/09/19/16-26-30/index.html">
+<meta property="og:site_name" content="节水的垃圾堆">
+<meta property="og:description" content="描述Java 合集框架。列出Collection 接口下面的接口、便利抽象类以及具体类 使用什么方法来从迭代器得到合集中的一个元素? ArrayList与LinkedList 之间的区别是什么?应该使用哪种线性表在一个线性表的起始位置插入和删除元素 ······">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-19T16:26:30.000Z">
+<meta property="article:modified_time" content="2025-01-07T17:17:08.308Z">
+<meta property="article:author" content="节水">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="作业">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.js2458.one/2023/09/19/16-26-30/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.js2458.one/2023/09/19/16-26-30/","path":"2023/09/19/16-26-30/","title":"Java作业-2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java作业-2 | 节水的垃圾堆</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+  
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节水的垃圾堆</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">你怎么什么都坚持不下去呢（恼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0java-%E5%90%88%E9%9B%86%E6%A1%86%E6%9E%B6-%E5%88%97%E5%87%BAcollection-%E6%8E%A5%E5%8F%A3%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%8E%A5%E5%8F%A3-%E4%BE%BF%E5%88%A9%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%BB%A5%E5%8F%8A%E5%85%B7%E4%BD%93%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text"> 描述Java 合集框架。列出Collection 接口下面的接口、便利抽象类以及具体类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95%E6%9D%A5%E4%BB%8E%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%BE%97%E5%88%B0%E5%90%88%E9%9B%86%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text"> 使用什么方法来从迭代器得到合集中的一个元素?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arraylist%E4%B8%8Elinkedlist-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8%E5%93%AA%E7%A7%8D%E7%BA%BF%E6%80%A7%E8%A1%A8%E5%9C%A8%E4%B8%80%E4%B8%AA%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E8%B5%B7%E5%A7%8B%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text"> ArrayList与LinkedList 之间的区别是什么?应该使用哪种线性表在一个线性表的起始位置插入和删除元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E8%AE%BElist1%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8C%85%E5%90%AB%E5%AD%97%E7%AC%A6%E4%B8%B2-red-yellow-green%E7%9A%84%E7%BA%BF%E6%80%A7%E8%A1%A8list2%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8C%85%E5%90%AB%E5%AD%97%E7%AC%A6%E4%B8%B2red-yellow-blue%E7%9A%84%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text"> 假设list1是一个包含字符串 red、yellow、green的线性表，list2是一个包含字符串red、yellow、blue的线性表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E5%BA%94%E8%AF%A5%E6%8A%9B%E5%87%BA-unsupportedoperationexception-%E5%BC%82%E5%B8%B8"><span class="nav-number">5.</span> <span class="nav-text"> 什么时候一个方法应该抛出 UnsupportedOperationException 异常?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E5%AD%97%E6%AF%8D%E5%BA%8F%E7%9A%84%E5%8D%87%E5%BA%8F%E6%98%BE%E7%A4%BA%E5%8D%95%E8%AF%8D%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E4%BB%8E%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8D%95%E8%AF%8D%E5%B9%B6%E6%8C%89%E5%AD%97%E6%AF%8D%E7%9A%84%E5%8D%87%E5%BA%8F%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E7%9A%84%E5%8D%95%E8%AF%8D%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%A4%8D-%E5%8D%95%E8%AF%8D%E5%BF%85%E9%A1%BB%E4%BB%A5%E5%AD%97%E6%AF%8D%E5%BC%80%E5%A7%8B-%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E4%BD%9C%E4%B8%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">6.</span> <span class="nav-text"> (按字母序的升序显示单词)编写一个程序，从文本文件读取单词，并按字母的升序显示所有的单词(可以重复)。单词必须以字母开始。文本文件作为命令行参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E9%93%BE%E8%A1%A8%E4%B8%8A%E4%BD%BF%E7%94%A8%E9%81%8D%E5%8E%86%E5%99%A8%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E4%B8%8A%E5%AD%98%E5%82%A8-500-%E4%B8%87%E4%B8%AA%E6%95%B4%E6%95%B0%E6%B5%8B%E8%AF%95%E5%88%86%E5%88%AB%E4%BD%BF%E7%94%A8iterator-%E5%92%8C%E4%BD%BF%E7%94%A8-getindex%E6%96%B9%E6%B3%95%E7%9A%84%E9%81%8D%E5%8E%86%E6%97%B6%E9%97%B4"><span class="nav-number">7.</span> <span class="nav-text"> (在链表上使用遍历器)编写一个测试程序，在一个链表上存储 500 万个整数，测试分别使用iterator 和使用 get(index)方法的遍历时间</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="节水"
+      src="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+  <p class="site-author-name" itemprop="name">节水</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JS24588542" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JS24588542" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/js2458" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;js2458" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/10849561?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;10849561?spm_id_from&#x3D;333.1007.0.0" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.js2458.one/2023/09/19/16-26-30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+      <meta itemprop="name" content="节水">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java作业-2 | 节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java作业-2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-20 00:26:30" itemprop="dateCreated datePublished" datetime="2023-09-20T00:26:30+08:00">2023-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-08 01:17:08" itemprop="dateModified" datetime="2025-01-08T01:17:08+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>描述Java 合集框架。列出Collection 接口下面的接口、便利抽象类以及具体类<br>
+使用什么方法来从迭代器得到合集中的一个元素?<br>
+ArrayList与LinkedList 之间的区别是什么?应该使用哪种线性表在一个线性表的起始位置插入和删除元素<br>
+······</p>
+<span id="more"></span>
+<h2 id="描述java-合集框架-列出collection-接口下面的接口-便利抽象类以及具体类"><a class="markdownIt-Anchor" href="#描述java-合集框架-列出collection-接口下面的接口-便利抽象类以及具体类"></a> 描述Java 合集框架。列出Collection 接口下面的接口、便利抽象类以及具体类</h2>
+<p>Collection定义了各种数据结构和算法的标准API</p>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List</td>
+<td>有序集合，可以包含重复元素</td>
+<td>ArrayList/LinkedList/Vector/Stack</td>
+</tr>
+<tr>
+<td>Set</td>
+<td>无序集合，不包含重复元素</td>
+<td>HashSet/LinkedHashSet/TreeSet</td>
+</tr>
+<tr>
+<td>Queue</td>
+<td>元素按特定方式进行排列的集合</td>
+<td>LinkedList/PriorityQueue</td>
+</tr>
+<tr>
+<td>Deque</td>
+<td>双端队列接口</td>
+<td>ArrayDeque/LinkedList</td>
+</tr>
+</tbody>
+</table>
+<p>便利抽象类用于简化新合集类型的创建</p>
+<table>
+<thead>
+<tr>
+<th>便利抽象类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AbstractCollection</td>
+<td>实现Collection接口的基础抽象类</td>
+</tr>
+<tr>
+<td>AbstractList</td>
+<td>实现List接口的抽象类</td>
+</tr>
+<tr>
+<td>AbstractSet</td>
+<td>实现Set接口的抽象类</td>
+</tr>
+<tr>
+<td>AbstractQueue</td>
+<td>实现Queue接口的抽象类</td>
+</tr>
+<tr>
+<td>AbstractSequentialList</td>
+<td>用于继承链表结构的抽象类</td>
+</tr>
+<tr>
+<td>AbstractMap</td>
+<td>实现Map接口的抽象类（虽然Map不是Collection接口的一部分，但通常也被认为是合集框架的一部分）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>具体类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ArrayList</td>
+<td>动态数组实现的列表。</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>双向链表实现的列表和双端队列。</td>
+</tr>
+<tr>
+<td>HashSet</td>
+<td>基于哈希表的集合。</td>
+</tr>
+<tr>
+<td>LinkedHashSet</td>
+<td>基于哈希表和链表的集合。</td>
+</tr>
+<tr>
+<td>TreeSet</td>
+<td>基于红黑树的排序集合。</td>
+</tr>
+<tr>
+<td>PriorityQueue</td>
+<td>基于堆结构的优先队列。</td>
+</tr>
+<tr>
+<td>ArrayDeque</td>
+<td>动态数组实现的双端队列。</td>
+</tr>
+<tr>
+<td>Vector</td>
+<td>线程安全的动态数组。</td>
+</tr>
+<tr>
+<td>Stack</td>
+<td>Vector的一个子类，实现了一个后进先出（LIFO）的栈。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="使用什么方法来从迭代器得到合集中的一个元素"><a class="markdownIt-Anchor" href="#使用什么方法来从迭代器得到合集中的一个元素"></a> 使用什么方法来从迭代器得到合集中的一个元素?</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 获取迭代器对象：首先使用合集的 iterator() 方法获取一个迭代器对象。</span>
+<span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> iterator <span class="token operator">=</span> myCollection<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 检查是否有下一个元素：使用 hasNext() 方法检查迭代器中是否还有更多的元素。</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 获取下一个元素：如果有下一个元素，使用 next() 方法获取它。</span>
+    <span class="token class-name">String</span> element <span class="token operator">=</span> iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="arraylist与linkedlist-之间的区别是什么应该使用哪种线性表在一个线性表的起始位置插入和删除元素"><a class="markdownIt-Anchor" href="#arraylist与linkedlist-之间的区别是什么应该使用哪种线性表在一个线性表的起始位置插入和删除元素"></a> ArrayList与LinkedList 之间的区别是什么?应该使用哪种线性表在一个线性表的起始位置插入和删除元素</h2>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>ArrayList</th>
+<th>LinkedList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>底层数据结构</td>
+<td>基于动态数组实现。</td>
+<td>基于双向链表实现。</td>
+</tr>
+<tr>
+<td>随机访问</td>
+<td>提供快速的随机访问，时间复杂度是O(1)</td>
+<td>随机访问相对较慢，时间复杂度是 O(n)</td>
+</tr>
+<tr>
+<td>插入和删除</td>
+<td>在列表的中间或起始位置插入和删除元素需要移动元素，时间复杂度是 O(n)。但在末尾的插入和删除是快速的，时间复杂度是 O(1)</td>
+<td>在列表的起始位置、中间或末尾插入和删除元素都很快，时间复杂度是 O(1)</td>
+</tr>
+<tr>
+<td>内存开销</td>
+<td>由于是数组-based，内存利用率相对较高</td>
+<td>需要额外的内存来存储链表的前后关系（节点的前驱和后继），所以内存开销更大</td>
+</tr>
+<tr>
+<td>扩容</td>
+<td>当数组达到容量上限时需要进行扩容，这是一个时间复杂度为 O(n) 的操作</td>
+<td>由于是链表结构，不需要像数组那样进行扩容</td>
+</tr>
+</tbody>
+</table>
+<p>在起始位置插入和删除元素时，LinkedList 通常是更好的选择，因为这些操作的时间复杂度是 O(1)。ArrayList 需要移动所有其他元素来填补空位或创建空位，所以这些操作的时间复杂度是 O(n)。</p>
+<h2 id="假设list1是一个包含字符串-red-yellow-green的线性表list2是一个包含字符串red-yellow-blue的线性表"><a class="markdownIt-Anchor" href="#假设list1是一个包含字符串-red-yellow-green的线性表list2是一个包含字符串red-yellow-blue的线性表"></a> 假设list1是一个包含字符串 red、yellow、green的线性表，list2是一个包含字符串red、yellow、blue的线性表</h2>
+<ul>
+<li>执行完list1.addAll(list2)方法之后，线性表 list1和list2分别变成了什么?<br>
+[red, yellow, green, red, yellow, blue]<br>
+[red, yellow, blue]</li>
+<li>执行完list1.add(list2)方法之后，线性表list1和list2分别变成了什么?<br>
+<code>The method add(String) in the type ArrayList&lt;String&gt; is not applicable for the arguments (ArrayList&lt;String&gt;)Java(67108979)</code><br>
+这参数不对吧-_-</li>
+<li>执行完list1.removeAll(list2)方法之后，线性表list1和list2分别变成了什么?<br>
+[green]<br>
+[red, yellow, blue]</li>
+<li>执行完list1.remove(list2)方法之后，线性表list1和list2分别变成了什么?<br>
+<code>Unlikely argument type ArrayList&lt;String&gt; for remove(Object) on a Collection&lt;String&gt;Java(1200)</code><br>
+[red, yellow, green]<br>
+[red, yellow, blue]</li>
+<li>执行完list1.retainAll(list2)方法之后，线性表list1和list2分别变成了什么?<br>
+[red, yellow]<br>
+[red, yellow, blue]</li>
+<li>执行完list1.clear()方法之后，线性表list1变成了什么?<br>
+[]</li>
+</ul>
+<h2 id="什么时候一个方法应该抛出-unsupportedoperationexception-异常"><a class="markdownIt-Anchor" href="#什么时候一个方法应该抛出-unsupportedoperationexception-异常"></a> 什么时候一个方法应该抛出 UnsupportedOperationException 异常?</h2>
+<p>用于标明“这个操作在这个上下文中没有意义或不被支持”<br>
+常见情况：</p>
+<ul>
+<li>不可修改的集合：试图修改一个不可修改（unmodifiable）或只读的集合时，通常会抛出这种异常。例如，Collections.unmodifiableList() 返回一个不可修改的列表，对这个列表调用任何修改操作（如 add, remove 等）都会抛出 UnsupportedOperationException。</li>
+<li>部分实现接口：有些类只部分实现某个接口，并不提供接口中所有方法的完整实现。在这种情况下，不支持的方法通常会抛出 UnsupportedOperationException。</li>
+<li>不支持的操作：某些数据结构有固有的限制，不能执行某些操作。例如，在一个队列（Queue）实现中，如果某个特定操作（比如在固定大小队列中添加元素）是不被支持的，那么尝试执行该操作将抛出此异常。</li>
+<li>抽象类和接口：当一个抽象类或接口定义了一个方法，但没有提供默认实现，并且该方法对于该类或接口没有意义时，通常会在该方法体中抛出 UnsupportedOperationException。</li>
+<li>为了明确性：在某些情况下，即使技术上可以实现某个操作，但为了避免误导，也会选择抛出这个异常。例如，在一个不可变对象的 setter 方法中。</li>
+</ul>
+<h2 id="按字母序的升序显示单词编写一个程序从文本文件读取单词并按字母的升序显示所有的单词可以重复-单词必须以字母开始-文本文件作为命令行参数传递"><a class="markdownIt-Anchor" href="#按字母序的升序显示单词编写一个程序从文本文件读取单词并按字母的升序显示所有的单词可以重复-单词必须以字母开始-文本文件作为命令行参数传递"></a> (按字母序的升序显示单词)编写一个程序，从文本文件读取单词，并按字母的升序显示所有的单词(可以重复)。单词必须以字母开始。文本文件作为命令行参数传递</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileInputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileNotFoundException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStreamReader</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>nio<span class="token punctuation">.</span>charset<span class="token punctuation">.</span></span><span class="token class-name">StandardCharsets</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ReadSort</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">FileNotFoundException</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>args<span class="token punctuation">.</span>length <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"请输入要读取的文件路径"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token class-name">String</span> fileName <span class="token operator">=</span> args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"读取的文件为："</span> <span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> words <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">(</span><span class="token class-name">Scanner</span> sc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>
+                    <span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">StandardCharsets</span><span class="token punctuation">.</span><span class="token constant">UTF_8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// while (sc.hasNextLine()) { // 按行读取字符串</span>
+                <span class="token comment">// String line = sc.nextLine();</span>
+                <span class="token comment">// System.out.println(line);</span>
+                <span class="token comment">// }</span>
+                sc<span class="token punctuation">.</span><span class="token function">useDelimiter</span><span class="token punctuation">(</span><span class="token string">"\\s+"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 使用空白作为默认分隔符</span>
+
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>sc<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token class-name">String</span> word <span class="token operator">=</span> sc<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>word<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token string">"^[A-z]+.*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        words<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>words<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            words<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>words<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="在链表上使用遍历器编写一个测试程序在一个链表上存储-500-万个整数测试分别使用iterator-和使用-getindex方法的遍历时间"><a class="markdownIt-Anchor" href="#在链表上使用遍历器编写一个测试程序在一个链表上存储-500-万个整数测试分别使用iterator-和使用-getindex方法的遍历时间"></a> (在链表上使用遍历器)编写一个测试程序，在一个链表上存储 500 万个整数，测试分别使用iterator 和使用 get(index)方法的遍历时间</h2>
+<p>使用get(index)遍历链表（特别是LinkedList）通常比使用迭代器要慢得多，因为每次调用get(index)都需要从链表头部或尾部遍历到指定的索引位置。这会使得遍历整个链表的时间复杂度变为O(n^2)。与此同时，使用迭代器只需要O(n)的时间。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">LinkedList</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ListIterator</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LinkedListTest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 创建一个包含500万个整数的链表</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5_000_000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// 使用迭代器遍历链表，并计算所需时间</span>
+        <span class="token keyword">long</span> startTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ListIterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> iterator <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">listIterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">long</span> endTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"使用迭代器遍历链表所需时间： "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>endTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 使用 get(index) 遍历链表，并计算所需时间</span>
+        startTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        endTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"使用 get(index) 遍历链表所需时间： "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>endTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试结果(ms)</p>
+<table>
+<thead>
+<tr>
+<th>数量</th>
+<th>iterator</th>
+<th>get(index)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5000</td>
+<td>~0</td>
+<td>15</td>
+</tr>
+<tr>
+<td>50000</td>
+<td>2</td>
+<td>799</td>
+</tr>
+<tr>
+<td>100000</td>
+<td>2</td>
+<td>3067</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
+              <a href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag"><i class="fa fa-tag"></i> 作业</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/12/02-26-30/" rel="prev" title="Java作业-1">
+                  <i class="fa fa-chevron-left"></i> Java作业-1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/26/04-20-05/" rel="next" title="Java作业-3">
+                  Java作业-3 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">节水</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">226k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:25</span>
+  </span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动-->
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/katex.min.css" integrity="sha256-oWCabCfPd4Oi21wqZezBSz/anto4VYcJqc9sM9IzQTk=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
+
+<!-- 页面点击出现烟花 -->
+
+
+
+
+
+  <script src="/js/myjs/code-unfold.js"></script>
+
+</body>
+</html>

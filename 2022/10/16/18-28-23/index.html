@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar16.png">
+  <link rel="mask-icon" href="/images/avatar32.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flash.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.js2458.one","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="文件的读写、基本数据结构、常用基本函数、窗口对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pandas笔记-2-Pandas基础">
+<meta property="og:url" content="https://blog.js2458.one/2022/10/16/18-28-23/index.html">
+<meta property="og:site_name" content="节水的垃圾堆">
+<meta property="og:description" content="文件的读写、基本数据结构、常用基本函数、窗口对象">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-16T18:28:23.000Z">
+<meta property="article:modified_time" content="2025-01-07T17:17:08.308Z">
+<meta property="article:author" content="节水">
+<meta property="article:tag" content="Pandas">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.js2458.one/2022/10/16/18-28-23/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.js2458.one/2022/10/16/18-28-23/","path":"2022/10/16/18-28-23/","title":"Pandas笔记-2-Pandas基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Pandas笔记-2-Pandas基础 | 节水的垃圾堆</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+  
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节水的垃圾堆</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">你怎么什么都坚持不下去呢（恼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99"><span class="nav-number">1.</span> <span class="nav-text"> 文件的读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="nav-number">1.1.</span> <span class="nav-text"> 文件读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%86%99%E5%85%A5"><span class="nav-number">1.2.</span> <span class="nav-text"> 数据写入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text"> 基本数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#series"><span class="nav-number">2.1.</span> <span class="nav-text"> Series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dataframe"><span class="nav-number">2.2.</span> <span class="nav-text"> DataFrame</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text"> 常用基本函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%87%E6%80%BB%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text"> 汇总函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text"> 特征统计函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%94%AF%E4%B8%80%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text"> 唯一值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="nav-number">3.4.</span> <span class="nav-text"> 替换函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0"><span class="nav-number">3.5.</span> <span class="nav-text"> 排序函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply%E6%96%B9%E6%B3%95"><span class="nav-number">3.6.</span> <span class="nav-text"> apply方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text"> 窗口对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%91%E7%AA%97%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.1.</span> <span class="nav-text"> 滑窗对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%BC%A0%E7%AA%97%E5%8F%A3"><span class="nav-number">4.2.</span> <span class="nav-text"> 扩张窗口</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="节水"
+      src="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+  <p class="site-author-name" itemprop="name">节水</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JS24588542" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JS24588542" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/js2458" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;js2458" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/10849561?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;10849561?spm_id_from&#x3D;333.1007.0.0" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.js2458.one/2022/10/16/18-28-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+      <meta itemprop="name" content="节水">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Pandas笔记-2-Pandas基础 | 节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pandas笔记-2-Pandas基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-10-17 02:28:23" itemprop="dateCreated datePublished" datetime="2022-10-17T02:28:23+08:00">2022-10-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-08 01:17:08" itemprop="dateModified" datetime="2025-01-08T01:17:08+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Joyful-Pandas/" itemprop="url" rel="index"><span itemprop="name">Joyful-Pandas</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>文件的读写、基本数据结构、常用基本函数、窗口对象</p>
+<span id="more"></span>
+<h2 id="文件的读写"><a class="markdownIt-Anchor" href="#文件的读写"></a> 文件的读写</h2>
+<h3 id="文件读取"><a class="markdownIt-Anchor" href="#文件读取"></a> 文件读取</h3>
+<p><code>pandas</code>可以读取很多文件格式，此处只讲<code>csv</code>,<code>excel</code>,<code>txt</code>。</p>
+<ul>
+<li><code>df_csv=pd.read_csv(.csv)</code></li>
+<li><code>df_txt=pd.read_table(.txt)</code></li>
+<li><code>df_excel=pd.read_excel(.xlsx)</code><br>
+有一些常用的公共参数</li>
+<li><code>header=None</code>表示第一行不作为列名</li>
+<li><code>index_col=['col1','col2']</code>表示将某一列或几列作为索引</li>
+<li><code>usecols=['col1','col2']</code>要读取的列的集合，默认全部</li>
+<li><code>parse_dates=['col']</code>需要转化为时间的列</li>
+<li><code>nrows=3</code>要读取的行数<br>
+读取<code>txt</code>文件遇到分隔符非空格，添加分割参数<code>sep</code>，并指定引擎为<code>python</code>，如</li>
+</ul>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">pd.read_table('filepath.txt',sep='re',engine='python')<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>需要注意，<code>sep</code>是正则参数</strong></p>
+<h3 id="数据写入"><a class="markdownIt-Anchor" href="#数据写入"></a> 数据写入</h3>
+<p><code>df_csv.to_csv('filepath.csv',index=False)</code>常把<code>index</code>设置为<code>False</code>，特别是在索引无特殊意义时，保存时能够去除索引。<br>
+<code>df_txt.to_csv('filepath.txt',sep='\t',index=False)</code>没有<code>to_table</code>，常用<code>\t</code>分割<br>
+<code>df_csv.to_markdown()</code>和<code>df_csv.to_latex()</code>能将表格转换为<code>markdown</code>和<code>latex</code>语言</p>
+<h2 id="基本数据结构"><a class="markdownIt-Anchor" href="#基本数据结构"></a> 基本数据结构</h2>
+<p>一维的<code>Series</code>和二维的<code>DataFrame</code></p>
+<h3 id="series"><a class="markdownIt-Anchor" href="#series"></a> Series</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'dic1'</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment">#序列的值</span>
+              index <span class="token operator">=</span> pd<span class="token punctuation">.</span>Index<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'id1'</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'third'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'my_idx'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment">#索引，也可以指定名字，默认为空</span>
+              dtype <span class="token operator">=</span> <span class="token string">'object'</span><span class="token punctuation">,</span><span class="token comment">#存储类型</span>
+              name <span class="token operator">=</span> <span class="token string">'my_name'</span><span class="token comment">#序列名字)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>object</code>代表一种混合类型，<code>pandas</code>将纯字符串序列也默认视为<code>object</code>类型序列，但也可以用<code>string</code>类型存储<br>
+可以通过<code>.</code>的方式获取属性，如<code>s.values</code>,<code>s.index</code>等，使用<code>.shape</code>获取序列的长度</p>
+<h3 id="dataframe"><a class="markdownIt-Anchor" href="#dataframe"></a> DataFrame</h3>
+<p><code>DataFrame</code>在<code>Series</code>上增加了列索引，可以通过二维的<code>data</code>与行列索引来构造</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2.2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">3.2</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data <span class="token operator">=</span> data<span class="token punctuation">,</span>
+                  index <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'row_%d'</span><span class="token operator">%</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'col_0'</span><span class="token punctuation">,</span> <span class="token string">'col_1'</span><span class="token punctuation">,</span> <span class="token string">'col_2'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>更多的，会采用从列索引名到数据的映射来构造数据框，并加上行索引</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'col_0'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                          <span class="token string">'col_1'</span><span class="token punctuation">:</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                          <span class="token string">'col_2'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token number">2.2</span><span class="token punctuation">,</span> <span class="token number">3.2</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                  index <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'row_%d'</span><span class="token operator">%</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在<code>DataFrame</code>中可以用<code>df.['col_1']</code>与<code>df.[[</code>col_1<code>,</code>col_2<code>]]</code>来取出相应的列与多个列组成的表，返回类型分别为<code>Series</code>和<code>DataFrame</code><br>
+与<code>Series</code>类似，<code>DataFrame</code>也可以取出相应的属性<br>
+通过<code>.T</code>将<code>DataFrame</code>转置</p>
+<h2 id="常用基本函数"><a class="markdownIt-Anchor" href="#常用基本函数"></a> 常用基本函数</h2>
+<h3 id="汇总函数"><a class="markdownIt-Anchor" href="#汇总函数"></a> 汇总函数</h3>
+<p><code>head(n)</code>，<code>tail(n)</code>返回前<code>n</code>或后<code>n</code>行，<code>n</code>默认为5<br>
+<code>info()</code>,<code>describe()</code>返回表的信息概况和表中数值列对应的主要统计量</p>
+<h3 id="特征统计函数"><a class="markdownIt-Anchor" href="#特征统计函数"></a> 特征统计函数</h3>
+<p><code>sum</code>求和，<code>mean</code>平均值，<code>median</code>中位数，<code>var</code>方差，<code>std</code>标准差，<code>max</code>，<code>min</code><br>
+<code>quantile(n)</code>分位数，<code>count</code>非缺失值个数，<code>idxmax</code>最大值对应索引<br>
+以上函数有公共参数<code>axis</code>，默认0逐列聚合，1逐行聚合</p>
+<h3 id="唯一值函数"><a class="markdownIt-Anchor" href="#唯一值函数"></a> 唯一值函数</h3>
+<p>对序列使用<code>unique</code>,<code>nunique</code>得到唯一值组成的列表和唯一值个数<br>
+<code>value_counts</code>得到唯一值和其对应的频数<br>
+<code>drop_duplicates(['col_name1','col_name2',···],keep=first)</code>多个列组合的唯一值，<code>keep</code>默认<code>first</code>表示保留第一次出现的行，<code>last</code>最后，<code>false</code>重复的删除（这让我想起了sql的distinct）<code>drop_duplicated</code>返回是否为唯一值的布尔列表</p>
+<h3 id="替换函数"><a class="markdownIt-Anchor" href="#替换函数"></a> 替换函数</h3>
+<p><code>pandas</code>中的替换函数包含映射替换、逻辑替换、数值替换</p>
+<ul>
+<li>
+<p>映射替换（<code>replace</code>,<code>str.replace</code>,<code>cat.codes</code>）</p>
+</li>
+<li>
+<p><code>replace</code><br>
+可以通过字典构造，或者传入两个列表来替换</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">[</span><span class="token string">'col_name1'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'key_1'</span><span class="token punctuation">:</span> value_1<span class="token punctuation">,</span><span class="token string">'key_2'</span><span class="token punctuation">:</span>value_2<span class="token punctuation">}</span><span class="token punctuation">)</span>
+df<span class="token punctuation">[</span><span class="token string">'col_name1'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'key_1'</span><span class="token punctuation">,</span><span class="token string">'key_2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>value_1<span class="token punctuation">,</span>value_2<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>可以指定<code>method</code>参数为<code>ffill</code>或<code>bfill</code>，分别使用前一个或后一个未被替换的值替换<br>
+<strong>如果没有这样的值，那么就取头或尾的值</strong>，如</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">'bfill'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>逻辑替换（<code>where</code>,<code>mask</code>）<br>
+<code>where</code>对不符合传入条件的行进行替换，<code>mask</code>反之，不指定替换之则替换为缺失值NaN<br>
+<code>s.where(s_condition,value)</code><br>
+也可以传入与s索引一致的布尔序列</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s_condition <span class="token operator">=</span>pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">,</span>···<span class="token punctuation">]</span><span class="token punctuation">,</span>index<span class="token operator">=</span>s<span class="token punctuation">.</span>index<span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>where<span class="token punctuation">(</span>s_condition<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>数值替换（<code>round</code>,<code>abs</code>,<code>clip</code>）</p>
+<ul>
+<li><code>round</code>按给定精度四舍五入</li>
+<li><code>abs</code>取绝对值</li>
+<li><code>clip</code>截断</li>
+</ul>
+</li>
+</ul>
+<h3 id="排序函数"><a class="markdownIt-Anchor" href="#排序函数"></a> 排序函数</h3>
+<ul>
+<li>值排序（<code>sort_values</code>）<br>
+<code>df.sort_values('col_1',ascending=True)</code>，<code>ascending</code>默认<code>True</code>升序。<br>
+可以对多列排序<br>
+<code>df.sort_values(['col_1','col_2',···],descending=[True,False])</code>，传入两个列表即可</li>
+<li>索引排序（<code>sort_index</code>）<br>
+用法与值排序一致，但元素的值在索引中，要指定索引层的名字或层号，用<code>level</code>表示。字符串按字母顺序排序<br>
+<code>df.sort_index(level=['col_1','col2'],ascending=[True,False])</code></li>
+</ul>
+<h3 id="apply方法"><a class="markdownIt-Anchor" href="#apply方法"></a> <code>apply</code>方法</h3>
+<p><code>apply</code>方法常用于<code>DataFrame</code>的行迭代或者列迭代，其参数往往是一个以序列为输入的函数，如<code>.mean()</code>，可以这样写出</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">my_mean</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#x为输入的序列</span>
+    res<span class="token operator">=</span>x<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> res
+df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>my_mean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>也可以使用<code>lambda</code>表达式<code>df.apply(lambda x:x.mean())</code><br>
+<strong><code>apply</code>使用性能换取自由度，仅在有自定义需求时再去考虑使用</strong></p>
+<h2 id="窗口对象"><a class="markdownIt-Anchor" href="#窗口对象"></a> 窗口对象</h2>
+<h3 id="滑窗对象"><a class="markdownIt-Anchor" href="#滑窗对象"></a> 滑窗对象</h3>
+<p>要使用滑窗函数，必须先对一个序列使用<code>.rolling</code>得到滑窗对象，最重要的参数是滑窗大小<code>window</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">roller<span class="token operator">=</span>s<span class="token punctuation">.</span>rolling<span class="token punctuation">(</span>window<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>类滑窗函数，公共参数<code>periods=n</code>，默认为1，可以为负，表示反向操作<br>
+它们的功能可以用窗口大小为<code>n+1</code>的<code>rolling</code>方法等价替代</p>
+<ul>
+<li>
+<p><code>shift</code>取向前第<code>n</code>个元素的值</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token punctuation">.</span>rolling<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span><span class="token builtin">list</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># s.shift(2)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p><code>diff</code>与向前第<code>n</code>个元素做差（区别于numpy）</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token punctuation">.</span>rolling<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span><span class="token builtin">list</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># s.shift(2)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p><code>pct_change</code>与向前第<code>n</code>个元素相比计算增长率。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">my_pct</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   L <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+   <span class="token keyword">return</span> L<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">/</span>L<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span>
+s<span class="token punctuation">.</span>rolling<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>my_pct<span class="token punctuation">)</span> <span class="token comment"># s.pct_change()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="扩张窗口"><a class="markdownIt-Anchor" href="#扩张窗口"></a> 扩张窗口</h3>
+<p>又称累计窗口，可以理解为一个动态长度的窗口，其窗口的大小就是从序列开始处到具体操作的对应位置，其使用的聚合函数会作用于这些逐步扩张的窗口上。具体地说，设序列为a1, a2, a3, a4，则其每个位置对应的窗口即[a1]、[a1, a2]、[a1, a2, a3]、[a1, a2, a3, a4]。<br>
+与类滑窗函数类似，也有类扩张窗口函数</p>
+<ul>
+<li>
+<p><code>cummax</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token punctuation">.</span>expanding<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">max</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#s.cummax()</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p><code>cumsum</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token punctuation">.</span>expanding<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#s.cumsum()</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p><code>cumprod</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token punctuation">.</span>expanding<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>values<span class="token punctuation">.</span>prod<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#s.cumprod()</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Pandas/" rel="tag"><i class="fa fa-tag"></i> Pandas</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/15/16-30-13/" rel="prev" title="Pandas笔记-1-预备知识">
+                  <i class="fa fa-chevron-left"></i> Pandas笔记-1-预备知识
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/18/16-59-26/" rel="next" title="矩阵计算的一些技巧">
+                  矩阵计算的一些技巧 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">节水</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">226k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:25</span>
+  </span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动-->
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/katex.min.css" integrity="sha256-oWCabCfPd4Oi21wqZezBSz/anto4VYcJqc9sM9IzQTk=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
+
+<!-- 页面点击出现烟花 -->
+
+
+
+
+
+  <script src="/js/myjs/code-unfold.js"></script>
+
+</body>
+</html>

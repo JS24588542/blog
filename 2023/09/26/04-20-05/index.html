@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar16.png">
+  <link rel="mask-icon" href="/images/avatar32.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flash.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.js2458.one","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="JavaFX相关实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java作业-3">
+<meta property="og:url" content="https://blog.js2458.one/2023/09/26/04-20-05/index.html">
+<meta property="og:site_name" content="节水的垃圾堆">
+<meta property="og:description" content="JavaFX相关实践">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z1.ax1x.com/2023/09/27/pPbPgC8.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/09/27/pPbP28S.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/09/27/pPbP64f.png">
+<meta property="article:published_time" content="2023-09-26T04:20:05.000Z">
+<meta property="article:modified_time" content="2025-01-07T17:17:08.308Z">
+<meta property="article:author" content="节水">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="作业">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/09/27/pPbPgC8.png">
+
+
+<link rel="canonical" href="https://blog.js2458.one/2023/09/26/04-20-05/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.js2458.one/2023/09/26/04-20-05/","path":"2023/09/26/04-20-05/","title":"Java作业-3"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java作业-3 | 节水的垃圾堆</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+  
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节水的垃圾堆</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">你怎么什么都坚持不下去呢（恼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89javafx%E4%B8%BB%E7%B1%BB-start-%E6%96%B9%E6%B3%95%E7%9A%84%E7%AD%BE%E5%90%8D%E6%98%AF%E4%BB%80%E4%B9%88%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%B0%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%BB%E5%8F%B0-%E4%B8%BB%E5%8F%B0%E6%98%AF%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E7%9A%84%E5%90%97%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AA%E8%88%9E%E5%8F%B0%E5%8F%AF%E4%BB%A5%E9%98%BB%E6%AD%A2%E7%94%A8%E6%88%B7%E6%94%B9%E5%8F%98%E8%88%9E%E5%8F%B0%E5%A4%A7%E5%B0%8F%E5%90%97%E5%9C%A8%E7%A8%8B%E5%BA%8F%E6%B8%85%E5%8D%95-14-1-%E4%B8%AD%E5%8F%AF%E4%BB%A5%E5%B0%86%E7%AC%AC22%E8%A1%8C%E7%9A%84applicationlaunchargs%E6%9B%BF%E4%BB%A3%E4%B8%BA-launchargs%E5%90%97"><span class="nav-number">1.</span> <span class="nav-text"> 如何定义JavaFX主类? start 方法的签名是什么?什么是台?什么是主台? 主台是自动生成的吗?如何显示一个舞台?可以阻止用户改变舞台大小吗?在程序清单 14-1 中，可以将第22行的Application.launch(args)替代为 launch(args)吗?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E6%9D%BF%E4%BB%80%E4%B9%88%E6%98%AF%E8%8A%82%E7%82%B9%E5%A6%82%E4%BD%95%E5%B0%86%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%BD%AE%E4%BA%8E%E9%9D%A2%E6%9D%BF%E4%B8%AD%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%B0%86-shape-%E6%88%96%E8%80%85-imageview%E7%BD%AE%E4%BA%8Escene%E4%B8%AD%E5%90%97%E5%8F%AF%E4%BB%A5%E5%B0%86-control%E6%88%96%E8%80%85-pane-%E7%9B%B4%E6%8E%A5%E7%BD%AE%E4%BA%8Escene-%E4%B8%AD%E5%90%97"><span class="nav-number">2.</span> <span class="nav-text"> 什么是面板?什么是节点?如何将一个节点置于面板中?可以直接将 Shape 或者 ImageView置于Scene中吗?可以将 Control或者 Pane 直接置于Scene 中吗?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%89%80%E6%9C%89%E5%8F%AF%E7%94%A8%E7%9A%84%E5%AD%97%E4%BD%93"><span class="nav-number">3.</span> <span class="nav-text"> 如何找到系统中所有可用的字体？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F%E5%9C%A8%E4%B8%80%E4%B8%AA%E7%BD%91%E6%A0%BC%E9%9D%A2%E6%9D%BF%E9%87%8C%E9%9D%A2%E6%98%BE%E7%A4%BA4%E4%B8%AA%E5%9B%BE%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text"> （显示图像）在一个网格面板里面显示4个图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E5%92%8C%E5%AD%97%E4%BD%93%E8%AF%B7%E5%86%99%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%8F%AF%E4%BB%A5%E5%9E%82%E7%9B%B4%E6%98%BE%E7%A4%BA-5%E4%B8%AA%E6%96%87%E5%AD%97%E5%A6%82%E5%9B%BE14-44a-%E6%89%80%E7%A4%BA-%E5%AF%B9%E6%AF%8F%E4%B8%AA%E6%96%87%E5%AD%97%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%9A%8F%E6%9C%BA%E9%A2%9C%E8%89%B2%E5%92%8C%E9%80%8F%E6%98%8E%E5%BA%A6%E5%B9%B6%E4%B8%94%E5%B0%86%E6%AF%8F%E4%B8%AA%E6%96%87%E5%AD%97%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE%E4%B8%BA-timesromes-bold-italic%E5%A4%A7%E5%B0%8F%E4%B8%BA-22-%E5%83%8F%E7%B4%A0"><span class="nav-number">5.</span> <span class="nav-text"> (颜色和字体)请写一个程序，可以垂直显示 5个文字，如图14-44a 所示。对每个文字设置一个随机颜色和透明度，并且将每个文字的字体设置为 TimesRomes、bold、italic，大小为 22 像素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AA%E8%B1%A1%E6%A3%8B%E6%A3%8B%E7%9B%98-%E8%AF%B7%E5%86%99%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AA%E8%B1%A1%E6%A3%8B%E6%A3%8B%E7%9B%98%E5%85%B6%E4%B8%AD%E6%AF%8F%E4%B8%AA%E9%BB%91%E7%99%BD%E5%8D%95%E5%85%83%E6%A0%BC%E9%83%BD%E6%98%AF%E4%B8%80%E4%B8%AA%E5%A1%AB%E5%85%85%E4%BA%86%E9%BB%91%E8%89%B2%E6%88%96%E8%80%85%E7%99%BD%E8%89%B2%E7%9A%84-rectangle"><span class="nav-number">6.</span> <span class="nav-text"> (游戏:显示一个象棋棋盘 )请写一个程序显示一个象棋棋盘，其中每个黑白单元格都是一个填充了黑色或者白色的 Rectangle</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="节水"
+      src="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+  <p class="site-author-name" itemprop="name">节水</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JS24588542" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JS24588542" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/js2458" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;js2458" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/10849561?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;10849561?spm_id_from&#x3D;333.1007.0.0" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.js2458.one/2023/09/26/04-20-05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+      <meta itemprop="name" content="节水">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java作业-3 | 节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java作业-3
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-26 12:20:05" itemprop="dateCreated datePublished" datetime="2023-09-26T12:20:05+08:00">2023-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-08 01:17:08" itemprop="dateModified" datetime="2025-01-08T01:17:08+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>JavaFX相关实践</p>
+<span id="more"></span>
+<h2 id="如何定义javafx主类-start-方法的签名是什么什么是台什么是主台-主台是自动生成的吗如何显示一个舞台可以阻止用户改变舞台大小吗在程序清单-14-1-中可以将第22行的applicationlaunchargs替代为-launchargs吗"><a class="markdownIt-Anchor" href="#如何定义javafx主类-start-方法的签名是什么什么是台什么是主台-主台是自动生成的吗如何显示一个舞台可以阻止用户改变舞台大小吗在程序清单-14-1-中可以将第22行的applicationlaunchargs替代为-launchargs吗"></a> 如何定义JavaFX主类? start 方法的签名是什么?什么是台?什么是主台? 主台是自动生成的吗?如何显示一个舞台?可以阻止用户改变舞台大小吗?在程序清单 14-1 中，可以将第22行的Application.launch(args)替代为 launch(args)吗?</h2>
+<ul>
+<li><strong>如何定义JavaFX主类?</strong><br>
+在JavaFX中，主类应该继承javafx.application.Application。这样可以定义启动应用程序的start方法。</li>
+<li><strong>start 方法的签名是什么?</strong><br>
+public void start(Stage primaryStage) throws Exception;</li>
+<li><strong>什么是台？</strong><br>
+“台"在JavaFX中通常指的是"Stage”。它是JavaFX应用程序中的顶级窗口。可以把它想象成一个应用程序窗口，并在其中放置各种UI元素和场景。</li>
+<li><strong>什么是主台?</strong><br>
+当JavaFX应用程序启动时，系统传递给start方法的Stage对象就是主台(primaryStage)。可以在这个Stage上设置场景(Scene)和其他UI元素。</li>
+<li><strong>主台是自动生成的吗?</strong><br>
+JavaFX应用程序启动时，系统会自动为你创建一个主台，并将其传递给start方法。</li>
+<li><strong>如何显示一个舞台?</strong><br>
+primaryStage.show();</li>
+<li><strong>可以阻止用户改变舞台大小吗?</strong><br>
+primaryStage.setResizable(false);</li>
+<li><strong>在程序清单 14-1 中，可以将第22行的Application.launch(args)替代为 launch(args)吗?</strong><br>
+如果JavaFX主类继承了Application类，那么可以直接使用launch(args)，而不需要Application.launch(args)。这是因为launch是Application类的一个静态方法，主类继承了这个类就可以直接调用。</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>control<span class="token punctuation">.</span></span><span class="token class-name">Button</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyJavaFX</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token class-name">MyJavaFX</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment">// System.out.println("constructor");</span>
+  <span class="token punctuation">}</span>
+
+    <span class="token comment">//  @Override // Override the start method in the Application class</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//  System.out.println("start");</span>
+    <span class="token comment">// Create a button and place it in the scene</span>
+    <span class="token class-name">Button</span> btOK <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Button</span><span class="token punctuation">(</span><span class="token string">"OK"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>btOK<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"MyJavaFX"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set the stage title</span>
+    primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Place the scene in the stage</span>
+    primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Display the stage</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// System.out.println("launch");</span>
+    <span class="token function">launch</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="什么是面板什么是节点如何将一个节点置于面板中可以直接将-shape-或者-imageview置于scene中吗可以将-control或者-pane-直接置于scene-中吗"><a class="markdownIt-Anchor" href="#什么是面板什么是节点如何将一个节点置于面板中可以直接将-shape-或者-imageview置于scene中吗可以将-control或者-pane-直接置于scene-中吗"></a> 什么是面板?什么是节点?如何将一个节点置于面板中?可以直接将 Shape 或者 ImageView置于Scene中吗?可以将 Control或者 Pane 直接置于Scene 中吗?</h2>
+<ul>
+<li>
+<p>什么是面板?<br>
+在JavaFX中，面板通常指的是Pane类及其子类。面板用于组织和布局界面中的UI组件。例如，HBox, VBox, GridPane, BorderPane等都是面板的示例。</p>
+</li>
+<li>
+<p>什么是节点?<br>
+在JavaFX中，节点是场景图中的一个元素。所有的JavaFX UI组件，无论是按钮、文本、图像还是其他元素，都是Node的子类。场景图是由这些节点组成的树状结构。</p>
+</li>
+<li>
+<p>如何将一个节点置于面板中?<br>
+面板（Pane及其子类）有一个getChildren()方法，该方法返回一个<code>ObservableList&lt;Node&gt;</code>，可以将节点添加到这个列表中。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Button</span> button <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Button</span><span class="token punctuation">(</span><span class="token string">"Click Me"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Pane</span> pane <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pane</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>可以直接将 Shape 或者 ImageView置于Scene中吗?<br>
+不能直接这么做。Scene的构造函数需要一个Parent对象作为其根元素。Shape和ImageView都是Node的子类，但不是Parent的子类。但你可以先将它们放在一个Pane（或其他类型的面板）中，然后再将该面板置于Scene中。</p>
+</li>
+<li>
+<p>可以将 Control或者 Pane 直接置于Scene 中吗?<br>
+可以。Control和Pane都是Parent的子类</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Button</span> button <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Button</span><span class="token punctuation">(</span><span class="token string">"Click Me"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="如何找到系统中所有可用的字体"><a class="markdownIt-Anchor" href="#如何找到系统中所有可用的字体"></a> 如何找到系统中所有可用的字体？</h2>
+<p>使用javafx.scene.text.Font类中的getFamilies()方法来获取系统中所有可用的字体家族名称</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">Font</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ListFonts</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 获取所有字体家族</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> family <span class="token operator">:</span> <span class="token class-name">Font</span><span class="token punctuation">.</span><span class="token function">getFamilies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>family<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="显示图像在一个网格面板里面显示4个图像"><a class="markdownIt-Anchor" href="#显示图像在一个网格面板里面显示4个图像"></a> （显示图像）在一个网格面板里面显示4个图像</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>image<span class="token punctuation">.</span></span><span class="token class-name">Image</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>image<span class="token punctuation">.</span></span><span class="token class-name">ImageView</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">GridPane</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ImageGrid</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">GridPane</span> grid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridPane</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">String</span> imageUrl <span class="token operator">=</span> <span class="token string">"E:\\Repos\\Course\\Java\\my\\code\\W3\\demo\\src\\main\\java\\com\\example\\avatar16.png"</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 创建4个图像视图</span>
+        <span class="token class-name">ImageView</span> imgView1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ImageView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span>imageUrl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ImageView</span> imgView2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ImageView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span>imageUrl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ImageView</span> imgView3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ImageView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span>imageUrl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ImageView</span> imgView4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ImageView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span>imageUrl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 将图像视图添加到网格的适当位置</span>
+        grid<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>imgView1<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        grid<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>imgView2<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        grid<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>imgView3<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        grid<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>imgView4<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Image Grid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/images/posts/pPbPgC8.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/09/27/pPbPgC8.png'">
+<h2 id="颜色和字体请写一个程序可以垂直显示-5个文字如图14-44a-所示-对每个文字设置一个随机颜色和透明度并且将每个文字的字体设置为-timesromes-bold-italic大小为-22-像素"><a class="markdownIt-Anchor" href="#颜色和字体请写一个程序可以垂直显示-5个文字如图14-44a-所示-对每个文字设置一个随机颜色和透明度并且将每个文字的字体设置为-timesromes-bold-italic大小为-22-像素"></a> (颜色和字体)请写一个程序，可以垂直显示 5个文字，如图14-44a 所示。对每个文字设置一个随机颜色和透明度，并且将每个文字的字体设置为 TimesRomes、bold、italic，大小为 22 像素</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">VBox</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>paint<span class="token punctuation">.</span></span><span class="token class-name">Color</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">Font</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">FontPosture</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">FontWeight</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">Text</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Random</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ColorFontDemo</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">VBox</span> vbox <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VBox</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10为文本间的垂直间距</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> words <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"Text1"</span><span class="token punctuation">,</span> <span class="token string">"Text2"</span><span class="token punctuation">,</span> <span class="token string">"Text3"</span><span class="token punctuation">,</span> <span class="token string">"Text4"</span><span class="token punctuation">,</span> <span class="token string">"Text5"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> word <span class="token operator">:</span> words<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Text</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            text<span class="token punctuation">.</span><span class="token function">setFill</span><span class="token punctuation">(</span><span class="token function">randomColorWithOpacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置随机颜色和透明度</span>
+            text<span class="token punctuation">.</span><span class="token function">setFont</span><span class="token punctuation">(</span><span class="token class-name">Font</span><span class="token punctuation">.</span><span class="token function">font</span><span class="token punctuation">(</span><span class="token string">"Times New Roman"</span><span class="token punctuation">,</span> <span class="token class-name">FontWeight</span><span class="token punctuation">.</span><span class="token constant">BOLD</span><span class="token punctuation">,</span> <span class="token class-name">FontPosture</span><span class="token punctuation">.</span><span class="token constant">ITALIC</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置字体</span>
+            vbox<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>vbox<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"ColorFontDemo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 生成带透明度的随机颜色</span>
+    <span class="token keyword">private</span> <span class="token class-name">Color</span> <span class="token function">randomColorWithOpacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Random</span> rand <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">(</span>rand<span class="token punctuation">.</span><span class="token function">nextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rand<span class="token punctuation">.</span><span class="token function">nextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rand<span class="token punctuation">.</span><span class="token function">nextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> rand<span class="token punctuation">.</span><span class="token function">nextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/images/posts/pPbP28S.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/09/27/pPbP28S.png'">
+<h2 id="游戏显示一个象棋棋盘-请写一个程序显示一个象棋棋盘其中每个黑白单元格都是一个填充了黑色或者白色的-rectangle"><a class="markdownIt-Anchor" href="#游戏显示一个象棋棋盘-请写一个程序显示一个象棋棋盘其中每个黑白单元格都是一个填充了黑色或者白色的-rectangle"></a> (游戏:显示一个象棋棋盘 )请写一个程序显示一个象棋棋盘，其中每个黑白单元格都是一个填充了黑色或者白色的 Rectangle</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">GridPane</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>paint<span class="token punctuation">.</span></span><span class="token class-name">Color</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>shape<span class="token punctuation">.</span></span><span class="token class-name">Rectangle</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Chessboard</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">TILE_SIZE</span> <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">BOARD_SIZE</span> <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">GridPane</span> grid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridPane</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> <span class="token constant">BOARD_SIZE</span><span class="token punctuation">;</span> row<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> <span class="token constant">BOARD_SIZE</span><span class="token punctuation">;</span> col<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token class-name">Rectangle</span> tile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token constant">TILE_SIZE</span><span class="token punctuation">,</span> <span class="token constant">TILE_SIZE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">Color</span> color<span class="token punctuation">;</span>
+
+                <span class="token comment">// 根据行和列的奇偶性决定方块的颜色</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>row <span class="token operator">+</span> col<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    color <span class="token operator">=</span> <span class="token class-name">Color</span><span class="token punctuation">.</span><span class="token constant">WHITE</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    color <span class="token operator">=</span> <span class="token class-name">Color</span><span class="token punctuation">.</span><span class="token constant">BLACK</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                tile<span class="token punctuation">.</span><span class="token function">setFill</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                grid<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>tile<span class="token punctuation">,</span> col<span class="token punctuation">,</span> row<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>grid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Chessboard"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/images/posts/pPbP64f.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/09/27/pPbP64f.png'">
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
+              <a href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag"><i class="fa fa-tag"></i> 作业</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/19/16-26-30/" rel="prev" title="Java作业-2">
+                  <i class="fa fa-chevron-left"></i> Java作业-2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/26/21-02-21/" rel="next" title="使用Vscode-maven安装javaFX">
+                  使用Vscode-maven安装javaFX <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">节水</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">226k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:25</span>
+  </span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动-->
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/katex.min.css" integrity="sha256-oWCabCfPd4Oi21wqZezBSz/anto4VYcJqc9sM9IzQTk=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
+
+<!-- 页面点击出现烟花 -->
+
+
+
+
+
+  <script src="/js/myjs/code-unfold.js"></script>
+
+</body>
+</html>

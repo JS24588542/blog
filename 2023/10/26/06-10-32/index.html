@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar16.png">
+  <link rel="mask-icon" href="/images/avatar32.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flash.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.js2458.one","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="JavaFx相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java作业-6">
+<meta property="og:url" content="https://blog.js2458.one/2023/10/26/06-10-32/index.html">
+<meta property="og:site_name" content="节水的垃圾堆">
+<meta property="og:description" content="JavaFx相关">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/26/piZpgOS.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/26/piZp6Qf.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/26/piZprWt.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/26/piZpDJI.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/26/piZpySP.png">
+<meta property="og:image" content="https://z1.ax1x.com/2023/10/26/piZpcy8.png">
+<meta property="article:published_time" content="2023-10-26T06:10:32.000Z">
+<meta property="article:modified_time" content="2025-01-07T17:17:08.308Z">
+<meta property="article:author" content="节水">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="作业">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/10/26/piZpgOS.png">
+
+
+<link rel="canonical" href="https://blog.js2458.one/2023/10/26/06-10-32/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.js2458.one/2023/10/26/06-10-32/","path":"2023/10/26/06-10-32/","title":"Java作业-6"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java作业-6 | 节水的垃圾堆</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+  
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">节水的垃圾堆</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">你怎么什么都坚持不下去呢（恼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA-observable-%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E8%A2%AB%E8%AE%A4%E4%B8%BA%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8F%AF%E8%A7%82%E5%AF%9F%E5%AF%B9%E8%B1%A1%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%9B%91%E5%90%AC%E5%99%A8%E7%9B%91%E5%90%AC%E5%99%A8%E5%BF%85%E9%A1%BB%E5%AE%9E%E7%8E%B0%E4%BB%80%E4%B9%88%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text"> 一个 Observable 类的实例被认为是一个可观察对象,如何添加一个监听器？监听器必须实现什么接口？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%8F%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AF%B9%E4%BA%8E%E4%B8%80%E4%B8%AA-lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%80%8C%E8%A8%80%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text"> 什么是功能接口？为什么对于一个 lambda 表达式而言，必须是一个功能接口？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E4%B8%80%E4%B8%AA%E9%BC%A0%E6%A0%87%E6%8C%89%E4%B8%8B-%E9%87%8A%E6%94%BE-%E5%8D%95%E5%87%BB-%E8%BF%9B%E5%85%A5-%E9%80%80%E5%87%BA-%E7%A7%BB%E5%8A%A8%E5%92%8C%E6%8B%96%E5%8A%A8%E4%BA%8B%E4%BB%B6%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95%E6%9D%A5%E6%B3%A8%E5%86%8C%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%BA%94%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text"> 对于一个鼠标按下、释放、单击、进入、退出、移动和拖动事件，使用什么方法来注册一个相应的处理器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95%E6%9D%A5%E9%92%88%E5%AF%B9%E9%94%AE%E7%9A%84%E6%8C%89%E4%B8%8B-%E9%87%8A%E6%94%BE%E4%BB%A5%E5%8F%8A%E6%95%B2%E5%87%BB%E4%BA%8B%E4%BB%B6%E6%B3%A8%E5%86%8C%E5%A4%84%E7%90%86%E5%99%A8%E8%BF%99%E4%BA%9B%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89%E5%9C%A8%E5%93%AA%E4%BA%9B%E7%B1%BB%E4%B8%AD"><span class="nav-number">4.</span> <span class="nav-text"> 使用什么方法来针对键的按下、释放以及敲击事件注册处理器？这些方法定义在哪些类中？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B0%A1%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%AE%8C%E6%88%90%E5%8A%A0%E6%B3%95-%E5%87%8F%E6%B3%95-%E4%B9%98%E6%B3%95%E5%92%8C%E9%99%A4%E6%B3%95%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text"> (创建一个簡单的计算器) 编写一个程序完成加法、减法、乘法和除法操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%B9%B6%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%B7%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E4%BB%8E%E9%94%AE%E7%9B%98%E6%8E%A5%E6%94%B6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B6%E6%8A%8A%E5%AE%83%E6%98%BE%E7%A4%BA%E5%9C%A8%E9%9D%A2%E6%9D%BF%E4%B8%8A-%E5%9B%9E%E8%BD%A6%E9%94%AE%E8%A1%A8%E6%98%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F-%E4%BB%BB%E4%BD%95%E6%97%B6%E5%80%99%E8%BE%93%E4%BA%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%97%B6%E9%83%BD%E4%BC%9A%E5%B0%86%E5%AE%83%E6%98%BE%E7%A4%BA%E5%9C%A8%E9%9D%A2%E6%9D%BF%E4%B8%8A"><span class="nav-number">6.</span> <span class="nav-text"> (输入并显示字符串)请编写一个程序，从键盘接收一个字符串并把它显示在面板上。回车键表明字符串结束。任何时候输人一个新字符串时都会将它显示在面板上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%E6%89%8B%E7%9C%BC%E5%8D%8F%E8%B0%83%E8%AF%B7%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E6%98%BE%E7%A4%BA%E4%B8%80%E4%B8%AA%E5%8D%8A%E5%BE%84%E4%B8%BA10-%E5%83%8F%E7%B4%A0%E7%9A%84%E5%AE%9E%E5%BF%83%E5%9C%86%E8%AF%A5%E5%9C%86%E6%94%BE%E7%BD%AE%E5%9C%A8%E9%9D%A2%E6%9D%BF%E4%B8%8A%E7%9A%84%E9%9A%8F%E6%9C%BA%E4%BD%8D%E7%BD%AE%E5%B9%B6%E5%A1%AB%E5%85%85%E9%9A%8F%E6%9C%BA%E7%9A%84%E9%A1%94%E8%89%B2%E5%A6%82%E5%9B%BE15-29b%E6%89%80%E7%A4%BA-%E5%8D%95%E5%87%BB%E8%BF%99%E4%B8%AA%E5%9C%86%E6%97%B6%E5%AE%83%E4%BC%9A%E6%B6%88%E5%A4%B1%E7%84%B6%E5%90%8E%E5%9C%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E9%9A%8F%E6%9C%BA%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%98%BE%E7%A4%BA%E6%96%B0%E7%9A%84%E9%9A%8F%E6%9C%BA%E9%A2%9C%E8%89%B2%E7%9A%84%E5%9C%86-%E5%9C%A8%E5%8D%95%E5%87%BB%E4%BA%8620-%E4%B8%AA%E5%9C%86%E4%B9%8B%E5%90%8E%E5%9C%A8%E9%9D%A2%E6%9D%BF%E4%B8%8A%E6%98%BE%E7%A4%BA%E6%89%80%E7%94%A8%E7%9A%84%E6%97%B6%E9%97%B4"><span class="nav-number">7.</span> <span class="nav-text"> (游戏：手眼协调)请编写一个程序，显示一个半径为10 像素的实心圆，该圆放置在面板上的随机位置，并填充随机的顔色，如图15-29b所示。单击这个圆时，它会消失，然后在另一个随机的位置显示新的随机颜色的圆。在单击了20 个圆之后，在面板上显示所用的时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%9C%86%E6%9F%B1%E9%87%8D%E5%86%99%E7%BC%96%E7%A8%8B%E7%BB%83%E4%B9%A0%E9%A2%98-1410-%E5%BD%93%E7%AA%97%E4%BD%93%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%97%B6%E5%80%99%E5%9C%86%E6%9F%B1%E7%9A%84%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6%E8%87%AA%E5%8A%A8%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F"><span class="nav-number">8.</span> <span class="nav-text"> (自动改变大小的圆柱)重写编程练习题 14.10, 当窗体改变大小的时候，圆柱的宽度和高度自动改变大小</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="节水"
+      src="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+  <p class="site-author-name" itemprop="name">节水</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JS24588542" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JS24588542" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/js2458" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;js2458" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/10849561?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;10849561?spm_id_from&#x3D;333.1007.0.0" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.js2458.one/2023/10/26/06-10-32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.ax1x.com/2022/09/29/xn2cSe.jpg">
+      <meta itemprop="name" content="节水">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java作业-6 | 节水的垃圾堆">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java作业-6
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-26 14:10:32" itemprop="dateCreated datePublished" datetime="2023-10-26T14:10:32+08:00">2023-10-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-08 01:17:08" itemprop="dateModified" datetime="2025-01-08T01:17:08+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>JavaFx相关</p>
+<span id="more"></span>
+<h2 id="一个-observable-类的实例被认为是一个可观察对象如何添加一个监听器监听器必须实现什么接口"><a class="markdownIt-Anchor" href="#一个-observable-类的实例被认为是一个可观察对象如何添加一个监听器监听器必须实现什么接口"></a> 一个 Observable 类的实例被认为是一个可观察对象,如何添加一个监听器？监听器必须实现什么接口？</h2>
+<p>实现<code>InvalidationListener</code>接口以重写<code>invalidated(Observable o)</code></p>
+<ul>
+<li>解耦监听器与Observable：尽量让监听器与被观察的对象解耦，以便于维护和扩展。</li>
+<li>避免在ChangeListener内部修改Observable值：这可能导致不可预见的行为。</li>
+<li>小心内存泄漏：如果你添加了一个监听器但之后没有从Observable对象中移除它，可能会导致内存泄漏。</li>
+</ul>
+<h2 id="什么是功能接口为什么对于一个-lambda-表达式而言必须是一个功能接口"><a class="markdownIt-Anchor" href="#什么是功能接口为什么对于一个-lambda-表达式而言必须是一个功能接口"></a> 什么是功能接口？为什么对于一个 lambda 表达式而言，必须是一个功能接口？</h2>
+<p>一个功能接口（Functional Interface）是具有单一抽象方法（SAM, Single Abstract Method）的接口。这意味着接口中只能有一个没有实现的方法。这种接口可以有多个带有默认或静态实现的方法，但只能有一个抽象方法。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@FunctionalInterface</span>  <span class="token comment">// 注解是可选的，但是有助于编译器检查</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MyFunctionalInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Lambda 表达式的主要目的是提供一种简洁、可读的方式来表示实例化一个单一方法的接口。因为 Lambda 表达式旨在提供一种简单的方式来实现一个方法，所以它自然地适用于具有单一抽象方法的接口。如果接口有多于一个的抽象方法，编译器将无法确定该实现哪一个，这会导致歧义。</p>
+<h2 id="对于一个鼠标按下-释放-单击-进入-退出-移动和拖动事件使用什么方法来注册一个相应的处理器"><a class="markdownIt-Anchor" href="#对于一个鼠标按下-释放-单击-进入-退出-移动和拖动事件使用什么方法来注册一个相应的处理器"></a> 对于一个鼠标按下、释放、单击、进入、退出、移动和拖动事件，使用什么方法来注册一个相应的处理器？</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">rectangle<span class="token punctuation">.</span><span class="token function">setOnMousePressed</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Mouse pressed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+rectangle<span class="token punctuation">.</span><span class="token function">setOnMouseReleased</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Mouse released"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+rectangle<span class="token punctuation">.</span><span class="token function">setOnMouseClicked</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Mouse clicked"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+rectangle<span class="token punctuation">.</span><span class="token function">setOnMouseEntered</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Mouse entered"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+rectangle<span class="token punctuation">.</span><span class="token function">setOnMouseExited</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Mouse exited"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+rectangle<span class="token punctuation">.</span><span class="token function">setOnMouseMoved</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Mouse moved"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+rectangle<span class="token punctuation">.</span><span class="token function">setOnMouseDragged</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Mouse dragged"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="使用什么方法来针对键的按下-释放以及敲击事件注册处理器这些方法定义在哪些类中"><a class="markdownIt-Anchor" href="#使用什么方法来针对键的按下-释放以及敲击事件注册处理器这些方法定义在哪些类中"></a> 使用什么方法来针对键的按下、释放以及敲击事件注册处理器？这些方法定义在哪些类中？</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">node<span class="token punctuation">.</span><span class="token function">setOnKetpressed</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Pressed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+node<span class="token punctuation">.</span><span class="token function">setOnKeyReleased</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Release"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+node<span class="token punctuation">.</span><span class="token function">setOnKeyTyped</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Typed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>定义在<code>javafx.scene.Node</code>类中，因此所有继承自<code>Node</code>的类（如<code>Control</code>，<code>Shape</code>，<code>Text</code>等）都可以使用这些方法。</p>
+<h2 id="创建一个簡单的计算器-编写一个程序完成加法-减法-乘法和除法操作"><a class="markdownIt-Anchor" href="#创建一个簡单的计算器-编写一个程序完成加法-减法-乘法和除法操作"></a> (创建一个簡单的计算器) 编写一个程序完成加法、减法、乘法和除法操作</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>geometry<span class="token punctuation">.</span></span><span class="token class-name">Pos</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>control<span class="token punctuation">.</span></span><span class="token class-name">Button</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>control<span class="token punctuation">.</span></span><span class="token class-name">TextField</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">BorderPane</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">HBox</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>paint<span class="token punctuation">.</span></span><span class="token class-name">Color</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">Text</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Caculator</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">HBox</span> hBox1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">HBox</span> hBox2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Text</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">"Divisor cannot be 0!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        text<span class="token punctuation">.</span><span class="token function">setFill</span><span class="token punctuation">(</span><span class="token class-name">Color</span><span class="token punctuation">.</span><span class="token constant">RED</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">BorderPane</span> borderPane <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BorderPane</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Button</span> addBtn <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Button</span><span class="token punctuation">(</span><span class="token string">"Add"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Button</span> subtractBtn <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Button</span><span class="token punctuation">(</span><span class="token string">"Subtract"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Button</span> multiplyBtn <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Button</span><span class="token punctuation">(</span><span class="token string">"Multiply"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Button</span> divideBtn <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Button</span><span class="token punctuation">(</span><span class="token string">"Divide"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Text</span> num1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">"Number 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">TextField</span> num1Field <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Text</span> num2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">"Number 2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">TextField</span> num2Field <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Text</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">"Result"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">TextField</span> resultField <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        resultField<span class="token punctuation">.</span><span class="token function">setEditable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hBox1<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num1Field<span class="token punctuation">,</span> num2<span class="token punctuation">,</span> num2Field<span class="token punctuation">,</span> result<span class="token punctuation">,</span> resultField<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hBox1<span class="token punctuation">.</span><span class="token function">setSpacing</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hBox1<span class="token punctuation">.</span><span class="token function">setAlignment</span><span class="token punctuation">(</span><span class="token class-name">Pos</span><span class="token punctuation">.</span><span class="token constant">CENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        hBox2<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>addBtn<span class="token punctuation">,</span> subtractBtn<span class="token punctuation">,</span> multiplyBtn<span class="token punctuation">,</span> divideBtn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hBox2<span class="token punctuation">.</span><span class="token function">setSpacing</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hBox2<span class="token punctuation">.</span><span class="token function">setAlignment</span><span class="token punctuation">(</span><span class="token class-name">Pos</span><span class="token punctuation">.</span><span class="token constant">CENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        addBtn<span class="token punctuation">.</span><span class="token function">setOnAction</span><span class="token punctuation">(</span>e <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            borderPane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num1Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num1Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num2Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num2Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> resultValue <span class="token operator">=</span> num1Value <span class="token operator">+</span> num2Value<span class="token punctuation">;</span>
+            resultField<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> resultValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        subtractBtn<span class="token punctuation">.</span><span class="token function">setOnAction</span><span class="token punctuation">(</span>e <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            borderPane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num1Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num1Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num2Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num2Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> resultValue <span class="token operator">=</span> num1Value <span class="token operator">-</span> num2Value<span class="token punctuation">;</span>
+            resultField<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> resultValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        multiplyBtn<span class="token punctuation">.</span><span class="token function">setOnAction</span><span class="token punctuation">(</span>e <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            borderPane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num1Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num1Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num2Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num2Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> resultValue <span class="token operator">=</span> num1Value <span class="token operator">*</span> num2Value<span class="token punctuation">;</span>
+            resultField<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> resultValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        divideBtn<span class="token punctuation">.</span><span class="token function">setOnAction</span><span class="token punctuation">(</span>e <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            borderPane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num1Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num1Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> num2Value <span class="token operator">=</span> <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>num2Field<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>num2Value <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                borderPane<span class="token punctuation">.</span><span class="token function">setTop</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                resultField<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">BorderPane</span><span class="token punctuation">.</span><span class="token function">setAlignment</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token class-name">Pos</span><span class="token punctuation">.</span><span class="token constant">CENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">double</span> resultValue <span class="token operator">=</span> num1Value <span class="token operator">/</span> num2Value<span class="token punctuation">;</span>
+            resultField<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> resultValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        borderPane<span class="token punctuation">.</span><span class="token function">setCenter</span><span class="token punctuation">(</span>hBox1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        borderPane<span class="token punctuation">.</span><span class="token function">setBottom</span><span class="token punctuation">(</span>hBox2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>borderPane<span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Caculator"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/images/posts/piZpgOS.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/26/piZpgOS.png'">
+<h2 id="输入并显示字符串请编写一个程序从键盘接收一个字符串并把它显示在面板上-回车键表明字符串结束-任何时候输人一个新字符串时都会将它显示在面板上"><a class="markdownIt-Anchor" href="#输入并显示字符串请编写一个程序从键盘接收一个字符串并把它显示在面板上-回车键表明字符串结束-任何时候输人一个新字符串时都会将它显示在面板上"></a> (输入并显示字符串)请编写一个程序，从键盘接收一个字符串并把它显示在面板上。回车键表明字符串结束。任何时候输人一个新字符串时都会将它显示在面板上</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>geometry<span class="token punctuation">.</span></span><span class="token class-name">Pos</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>control<span class="token punctuation">.</span></span><span class="token class-name">TextField</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">GridPane</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">HBox</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">StackPane</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">Text</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StringDisplay</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+
+    <span class="token class-name">StringBuilder</span> stringBuilder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用于存储输入的字符串</span>
+    <span class="token class-name">Text</span> displayText <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用于显示字符串的Text节点</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token class-name">GridPane</span> root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridPane</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">TextField</span> textField <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 添加键盘事件处理器</span>
+        textField<span class="token punctuation">.</span><span class="token function">setOnKeyTyped</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getCharacter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'\r'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 检查是否按下回车键</span>
+                displayText<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>stringBuilder<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 更新Text节点的内容</span>
+                stringBuilder<span class="token punctuation">.</span><span class="token function">setLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 清空StringBuilder</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                stringBuilder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getCharacter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加字符到StringBuilder</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">HBox</span> hbox1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">HBox</span> hbox2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        hbox1<span class="token punctuation">.</span><span class="token function">setAlignment</span><span class="token punctuation">(</span><span class="token class-name">Pos</span><span class="token punctuation">.</span><span class="token constant">CENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hbox1<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>textField<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hbox2<span class="token punctuation">.</span><span class="token function">setAlignment</span><span class="token punctuation">(</span><span class="token class-name">Pos</span><span class="token punctuation">.</span><span class="token constant">CENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hbox2<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>displayText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        root<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>hbox1<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加Text节点到面板</span>
+        root<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>hbox2<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加TextField到面板</span>
+        <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Display String"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/images/posts/piZp6Qf.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/26/piZp6Qf.png'">
+<h2 id="游戏手眼协调请编写一个程序显示一个半径为10-像素的实心圆该圆放置在面板上的随机位置并填充随机的顔色如图15-29b所示-单击这个圆时它会消失然后在另一个随机的位置显示新的随机颜色的圆-在单击了20-个圆之后在面板上显示所用的时间"><a class="markdownIt-Anchor" href="#游戏手眼协调请编写一个程序显示一个半径为10-像素的实心圆该圆放置在面板上的随机位置并填充随机的顔色如图15-29b所示-单击这个圆时它会消失然后在另一个随机的位置显示新的随机颜色的圆-在单击了20-个圆之后在面板上显示所用的时间"></a> (游戏：手眼协调)请编写一个程序，显示一个半径为10 像素的实心圆，该圆放置在面板上的随机位置，并填充随机的顔色，如图15-29b所示。单击这个圆时，它会消失，然后在另一个随机的位置显示新的随机颜色的圆。在单击了20 个圆之后，在面板上显示所用的时间</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Random</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">Pane</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>paint<span class="token punctuation">.</span></span><span class="token class-name">Color</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>shape<span class="token punctuation">.</span></span><span class="token class-name">Circle</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RandomCircle</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> clickCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 单击计数器</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> startTime<span class="token punctuation">;</span> <span class="token comment">// 记录开始时间</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Pane</span> pane <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pane</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        startTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 记录开始时间</span>
+
+        <span class="token comment">// 初始化圆</span>
+        <span class="token class-name">Circle</span> circle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setPositionAndColor</span><span class="token punctuation">(</span>circle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>circle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 注册单击事件</span>
+        circle<span class="token punctuation">.</span><span class="token function">setOnMouseClicked</span><span class="token punctuation">(</span>event <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            clickCount<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 单击计数器加一</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>clickCount <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 设置新的位置和颜色</span>
+                <span class="token function">setPositionAndColor</span><span class="token punctuation">(</span>circle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">long</span> endTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 记录结束时间</span>
+                <span class="token keyword">long</span> elapsedTime <span class="token operator">=</span> <span class="token punctuation">(</span>endTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 计算所用时间（毫秒）</span>
+
+                <span class="token comment">// 显示所用时间</span>
+                pane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 注意：这里简单地使用了JavaFX的Text组件，更多功能可根据需求添加</span>
+                <span class="token class-name"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span>Text</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span>Text</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">"Time: "</span> <span class="token operator">+</span> elapsedTime <span class="token operator">+</span> <span class="token string">"ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                pane<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>pane<span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Random Circle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">setPositionAndColor</span><span class="token punctuation">(</span><span class="token class-name">Circle</span> circle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Random</span> rand <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 设置随机位置</span>
+        <span class="token keyword">double</span> x <span class="token operator">=</span> <span class="token number">20</span> <span class="token operator">+</span> rand<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">360</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> y <span class="token operator">=</span> <span class="token number">20</span> <span class="token operator">+</span> rand<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">360</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        circle<span class="token punctuation">.</span><span class="token function">setCenterX</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        circle<span class="token punctuation">.</span><span class="token function">setCenterY</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 设置随机颜色</span>
+        <span class="token keyword">double</span> r <span class="token operator">=</span> rand<span class="token punctuation">.</span><span class="token function">nextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> g <span class="token operator">=</span> rand<span class="token punctuation">.</span><span class="token function">nextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> b <span class="token operator">=</span> rand<span class="token punctuation">.</span><span class="token function">nextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        circle<span class="token punctuation">.</span><span class="token function">setFill</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/images/posts/piZprWt.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/26/piZprWt.png'">
+<img src="/images/posts/piZpDJI.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/26/piZpDJI.png'">
+<h2 id="自动改变大小的圆柱重写编程练习题-1410-当窗体改变大小的时候圆柱的宽度和高度自动改变大小"><a class="markdownIt-Anchor" href="#自动改变大小的圆柱重写编程练习题-1410-当窗体改变大小的时候圆柱的宽度和高度自动改变大小"></a> (自动改变大小的圆柱)重写编程练习题 14.10, 当窗体改变大小的时候，圆柱的宽度和高度自动改变大小</h2>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>application<span class="token punctuation">.</span></span><span class="token class-name">Application</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Group</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span></span><span class="token class-name">Scene</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>layout<span class="token punctuation">.</span></span><span class="token class-name">BorderPane</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>shape<span class="token punctuation">.</span></span><span class="token class-name">Arc</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>shape<span class="token punctuation">.</span></span><span class="token class-name">ArcType</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>shape<span class="token punctuation">.</span></span><span class="token class-name">Ellipse</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>shape<span class="token punctuation">.</span></span><span class="token class-name">Line</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javafx<span class="token punctuation">.</span>stage<span class="token punctuation">.</span></span><span class="token class-name">Stage</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AutoCylinder</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token class-name">Stage</span> primaryStage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">BorderPane</span> pane <span class="token operator">=</span> <span class="token function">getPane</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Scene</span> scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span>pane<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 初始化圆柱</span>
+        <span class="token function">resizeCylinder</span><span class="token punctuation">(</span>pane<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 注册窗体大小改变事件</span>
+        scene<span class="token punctuation">.</span><span class="token function">widthProperty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observable<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token function">resizeCylinder</span><span class="token punctuation">(</span>pane<span class="token punctuation">,</span> newValue<span class="token punctuation">.</span><span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> scene<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        scene<span class="token punctuation">.</span><span class="token function">heightProperty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observable<span class="token punctuation">,</span> oldValue<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token function">resizeCylinder</span><span class="token punctuation">(</span>pane<span class="token punctuation">,</span> scene<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> newValue<span class="token punctuation">.</span><span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        primaryStage<span class="token punctuation">.</span><span class="token function">setScene</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"显示圆柱"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        primaryStage<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/** 返回圆柱面板 */</span>
+    <span class="token keyword">private</span> <span class="token class-name">BorderPane</span> <span class="token function">getPane</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BorderPane</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/** 改变圆柱大小 */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">resizeCylinder</span><span class="token punctuation">(</span><span class="token class-name">BorderPane</span> pane<span class="token punctuation">,</span> <span class="token keyword">double</span> width<span class="token punctuation">,</span> <span class="token keyword">double</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Group</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">double</span> <span class="token constant">X0</span> <span class="token operator">=</span> width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> <span class="token constant">Y0</span> <span class="token operator">=</span> height <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> cylinderHeight <span class="token operator">=</span> height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> radiusX <span class="token operator">=</span> width <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> radiusY <span class="token operator">=</span> height <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Ellipse</span> topEllipse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Ellipse</span><span class="token punctuation">(</span><span class="token constant">X0</span><span class="token punctuation">,</span> <span class="token constant">Y0</span><span class="token punctuation">,</span> radiusX<span class="token punctuation">,</span> radiusY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        topEllipse<span class="token punctuation">.</span><span class="token function">setStyle</span><span class="token punctuation">(</span><span class="token string">"-fx-stroke: black; -fx-fill: white;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Arc</span> dashArc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Arc</span><span class="token punctuation">(</span><span class="token constant">X0</span><span class="token punctuation">,</span> <span class="token constant">Y0</span> <span class="token operator">+</span> cylinderHeight<span class="token punctuation">,</span> radiusX<span class="token punctuation">,</span> radiusY<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dashArc<span class="token punctuation">.</span><span class="token function">setStyle</span><span class="token punctuation">(</span><span class="token string">"-fx-fill: white; -fx-stroke: black;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dashArc<span class="token punctuation">.</span><span class="token function">getStrokeDashArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token number">6.0</span><span class="token punctuation">,</span> <span class="token number">21.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dashArc<span class="token punctuation">.</span><span class="token function">setType</span><span class="token punctuation">(</span><span class="token class-name">ArcType</span><span class="token punctuation">.</span><span class="token constant">OPEN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Arc</span> solidArc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Arc</span><span class="token punctuation">(</span><span class="token constant">X0</span><span class="token punctuation">,</span> <span class="token constant">Y0</span> <span class="token operator">+</span> cylinderHeight<span class="token punctuation">,</span> radiusX<span class="token punctuation">,</span> radiusY<span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        solidArc<span class="token punctuation">.</span><span class="token function">setStyle</span><span class="token punctuation">(</span><span class="token string">"-fx-fill: white; -fx-stroke: black;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        solidArc<span class="token punctuation">.</span><span class="token function">setType</span><span class="token punctuation">(</span><span class="token class-name">ArcType</span><span class="token punctuation">.</span><span class="token constant">OPEN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Line</span> left <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Line</span><span class="token punctuation">(</span><span class="token constant">X0</span> <span class="token operator">-</span> radiusX<span class="token punctuation">,</span> <span class="token constant">Y0</span><span class="token punctuation">,</span> <span class="token constant">X0</span> <span class="token operator">-</span> radiusX<span class="token punctuation">,</span> <span class="token constant">Y0</span> <span class="token operator">+</span> cylinderHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Line</span> right <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Line</span><span class="token punctuation">(</span><span class="token constant">X0</span> <span class="token operator">+</span> radiusX<span class="token punctuation">,</span> <span class="token constant">Y0</span><span class="token punctuation">,</span> <span class="token constant">X0</span> <span class="token operator">+</span> radiusX<span class="token punctuation">,</span> <span class="token constant">Y0</span> <span class="token operator">+</span> cylinderHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        group<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>topEllipse<span class="token punctuation">,</span> dashArc<span class="token punctuation">,</span> solidArc<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pane<span class="token punctuation">.</span><span class="token function">setCenter</span><span class="token punctuation">(</span>group<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/images/posts/piZpySP.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/26/piZpySP.png'">
+<img src="/images/posts/piZpcy8.png" alt="" onerror="this.onerror=null; this.src='https://z1.ax1x.com/2023/10/26/piZpcy8.png'">
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
+              <a href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag"><i class="fa fa-tag"></i> 作业</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/18/01-26-39/" rel="prev" title="Java作业-5">
+                  <i class="fa fa-chevron-left"></i> Java作业-5
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/30/21-07-56/" rel="next" title="使用Ultralytics库跑自己的网络">
+                  使用Ultralytics库跑自己的网络 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">节水</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">226k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:25</span>
+  </span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动-->
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/katex.min.css" integrity="sha256-oWCabCfPd4Oi21wqZezBSz/anto4VYcJqc9sM9IzQTk=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
+
+<!-- 页面点击出现烟花 -->
+
+
+
+
+
+  <script src="/js/myjs/code-unfold.js"></script>
+
+</body>
+</html>
